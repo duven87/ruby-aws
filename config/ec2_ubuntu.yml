@@ -1,0 +1,34 @@
+---
+ec2:
+  - instance:
+    - params:
+      - :image_id: 'ami-8fd760f6'
+      - :min_count: '1'
+      - :max_count: '1'
+      - :key_name: 'name'
+      - :security_group_ids: 'sg-00000000'
+      - :user_data: ''
+      - :instance_type: 't2.micro'
+      - :placement:
+        - :availability_zone: 'eu-west-1a'
+      - :subnet_id: 'subnet-00000000'
+      - :tag_specifications:
+          - :tags:
+            - :key: "Name"
+            - :value: "Nom1"
+  - instance:
+    - params:
+      - :image_id: 'ami-8fd760f6'
+      - :min_count: '1'
+      - :max_count: '1'
+      - :key_name: 'name'
+      - :security_group_ids: 'sg-00000000'
+      - :user_data: ''
+      - :instance_type: 't2.micro'
+      - :placement:
+        - :availability_zone: 'eu-west-1a'
+      - :subnet_id: 'subnet-00000000'
+      - tag_specifications:
+          - :tags:
+            - :key: "Name"
+            - :value: "Nom2"
