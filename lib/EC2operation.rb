@@ -12,14 +12,14 @@ class EC2operation
         reservation.instances.each do |i| if reservation.instances.count > 0
           @n += 1
           if i.tags.count > 0
-            i.tags.each do |tag| if tag.key = "Name"
+            i.tags.each do |tag| if tag.key == "Name"
                 @name = tag.value
             end
-            end
           end
-          puts "#{"%3d"%[@n]} | #{"%-10s"%[@name]}  | ID = #{i.instance_id} | STATE = #{"%-13s"%[i.state.name]}  | PublicIP = #{i.public_ip_address}"
-          @name = nil
         end
+        puts "#{"%3d"%[@n]} | #{"%-10s"%[@name]}  | ID = #{i.instance_id} | STATE = #{"%-13s"%[i.state.name]}  | PublicIP = #{i.public_ip_address}"
+        end
+        @name = nil
       end
     end
   end

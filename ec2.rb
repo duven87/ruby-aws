@@ -21,15 +21,19 @@ ec2do = EC2operation.new(region)
 
 if options.instances[:create]
   relative = options.instances[:create]
-  relative.each do |dir|
-    Dir[File.join(File.dirname(__FILE__), dir, '*.yml')].each do |f|
-      json = YAML.load_file(File.new(f)).to_json
-      @ostruct = JSON.parse(json, object_class: OpenStruct)
+  begin
+    relative.each do |dir|
+      Dir[File.join(File.dirname(__FILE__), dir, '*.yml')].each do |f|
+        json = YAML.load_file(File.new(f)).to_json
+        @ostruct = JSON.parse(json, object_class: OpenStruct)
+      end
+      params = ec2do.parameters(@ostruct)
+      params.each do |p|
+        ec2do.createInstance(p)
+      end
     end
-    params = ec2do.parameters(@ostruct)
-    params.each do |p|
-      ec2do.createInstance(p)
-    end
+  rescue
+    puts "Instances struct not created"
   end
 end
 

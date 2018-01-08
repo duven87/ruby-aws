@@ -1,5 +1,5 @@
 class OptionsParse
-  Version = '0.5.0'
+  Version = '0.5.1'
 
   def self.parse(args)
     options = OpenStruct.new
@@ -13,7 +13,7 @@ class OptionsParse
       opts.separator ""
       opts.separator "Available options:"
 
-      opts.on("-r", "--region [REGION]", String,
+      opts.on("-r", "--region REGION", String,
              "Supply a region") do |region|
                   options.instances[:region] = region
       end
@@ -43,15 +43,15 @@ class OptionsParse
                   options.instances[:describe] ||= true
       end
 
-      opts.on("-g", "--autoscaling INSTANCE[s]-ID",
-                "Show autoscaling group (if any) of the INSTANCE[s]-ID supplied") do |id|
-                  options.instances[:ag] ||= id
-      end
+    #opts.on("-g", "--autoscaling INSTANCE[s]-ID",
+    #            "Show autoscaling group (if any) of the INSTANCE[s]-ID supplied") do |id|
+    #              options.instances[:ag] ||= id
+    #  end
 
-      opts.on("-u", "--userdata FILE",
-              "Replace user data from a supplied FILE") do |f|
-                  options.instances[:userDataFile] ||= f
-        end
+    #opts.on("-u", "--userdata FILE",
+    #          "Replace user data from a supplied FILE") do |f|
+    #              options.instances[:userDataFile] ||= f
+    #    end
 
       opts.on_tail("-v", "--version", "Show version") do
                   puts Version

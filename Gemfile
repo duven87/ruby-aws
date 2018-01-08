@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.4.2'
+ruby '2.5'
 
 gem 'aws-sdk', '~> 3.0', '>= 3.0.1'
 gem 'OptionParser', '~> 0.5.1'
