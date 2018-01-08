@@ -1,11 +1,10 @@
 Dir[File.join(File.dirname(__FILE__), 'lib', '*.rb')].each {|file| require file }
 require 'aws-sdk'
 require 'aws-sdk-ec2'
-require 'optparse'
+require 'optionparser'
 require 'ostruct'
 require 'yaml'
 require 'json'
-require 'ostruct'
 require 'pp'
 
 options = OptionsParse.parse(ARGV)
